@@ -1,0 +1,9 @@
+--- asskernel2/linux-5.19.9/arch/x86/entry/syscalls/syscall_64.tbl      2022-09-15 14:17:20.000000000 +0530
++++ asskernel/linux-5.19.9/arch/x86/entry/syscalls/syscall_64.tbl       2022-11-20 19:33:23.049950476 +0530
+@@ -415,5 +415,6 @@
+ 545    x32     execveat                compat_sys_execveat
+ 546    x32     preadv2                 compat_sys_preadv64v2
+ 547    x32     pwritev2                compat_sys_pwritev64v2
++548    common  twod_copy               sys_twod_copy
+ # This is the end of the legacy x32 range.  Numbers 548 and above are
+ # not special and are not to be used for x32-specific syscalls.

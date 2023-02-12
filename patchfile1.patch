@@ -1,0 +1,21 @@
+--- asskernel2/linux-5.19.9/kernel/sys.c        2022-09-15 14:17:20.000000000 +0530
++++ asskernel/linux-5.19.9/kernel/sys.c 2022-11-21 21:52:51.860026027 +0530
+@@ -207,6 +207,17 @@
+        return error;
+ }
+
++SYSCALL_DEFINE4(twod_copy, double **, source, double **, destination, int, x, int, y){
++       double * kernel_array[1024];
++       if(__copy_from_user(kernel_array, source, sizeof(double *)*(x*y))){
++               return -1;
++       }
++       if(__copy_to_user(destination, kernel_array, sizeof(double *)*(x*y))){
++               return -1;
++       }
++       return 0;
++}
++
+ SYSCALL_DEFINE3(setpriority, int, which, int, who, int, niceval)
+ {
+        struct task_struct *g, *p;
+
